@@ -8,11 +8,13 @@ const OverstockLocalTable = () => {
 	const myColumns = [
 		{
 			header: 'ID',
-			accessorKey: 'Id_Articulo'
+			accessorKey: 'Id_Articulo',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'ID Hijo',
-			accessorKey: 'Articulo_Codigo_Hijo'
+			accessorKey: 'Articulo_Codigo_Hijo',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Factor Unitario',
@@ -40,55 +42,68 @@ const OverstockLocalTable = () => {
 		},
 		{
 			header: 'Costo Unitario',
-			accessorKey: 'Costo_Unitario'
+			accessorKey: 'Costo_Unitario',
+			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
 		},
 		{
 			header: 'ABC',
-			accessorKey: 'ABC'
+			accessorKey: 'ABC',
+			cell: (cell) => <div className='text-center'>{cell.getValue()}</div>
 		},
 		{
 			header: 'AxC ABC Auto',
-			accessorKey: 'AxC_ABC_Auto'
+			accessorKey: 'AxC_ABC_Auto',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Existencia Actual',
-			accessorKey: 'Existencia_Actual'
+			accessorKey: 'Existencia_Actual',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Existencia Padre/Hijo',
-			accessorKey: 'Existencia_PadreHijo'
+			accessorKey: 'Existencia_PadreHijo',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Transito',
-			accessorKey: 'Transito'
+			accessorKey: 'Transito',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Politica Reposicion',
-			accessorKey: 'Politica_Reposicion'
+			accessorKey: 'Politica_Reposicion',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'PVD',
-			accessorKey: 'PVD'
+			accessorKey: 'PVD',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Stock Minimo',
-			accessorKey: 'Stock_Minimo'
+			accessorKey: 'Stock_Minimo',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Punto Reorden',
-			accessorKey: 'Punto_Reorden'
+			accessorKey: 'Punto_Reorden',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Inventario Maximo',
-			accessorKey: 'Inventario_Maximo'
+			accessorKey: 'Inventario_Maximo',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Dias Cobertura',
-			accessorKey: 'Dias_Cobertura'
+			accessorKey: 'Dias_Cobertura',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'PVD Usado',
-			accessorKey: 'PVD_Usado'
+			accessorKey: 'PVD_Usado',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Cobertura Fuente',
@@ -96,23 +111,28 @@ const OverstockLocalTable = () => {
 		},
 		{
 			header: 'Dias Cobertura Calc',
-			accessorKey: 'DiasCoberturaCalc'
+			accessorKey: 'DiasCoberturaCalc',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Costo Inventario',
-			accessorKey: 'Costo_Inventario'
+			accessorKey: 'Costo_Inventario',
+			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
 		},
 		{
 			header: 'Costo Sobre Existencia',
-			accessorKey: 'Costo_Sobre_Existencia'
+			accessorKey: 'Costo_Sobre_Existencia',
+			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
 		},
 		{
 			header: 'Existencia',
-			accessorKey: 'Existencia'
+			accessorKey: 'Existencia',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Sobre Existencia',
-			accessorKey: 'Sobre_Existencia'
+			accessorKey: 'Sobre_Existencia',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		}
 	];
 	return <TableWrapper table={<Table tableID='homeDetailsTable' data={tableDataJSON} columns={myColumns} />} />
