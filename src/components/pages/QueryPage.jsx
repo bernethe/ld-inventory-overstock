@@ -1,26 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Select from 'react-select';
 import MainLayout from '../layouts/MainLayout';
-import locals from '../../json/locals.json';
 import CountingNumber from '../elements/CountingNumber';
 import ChartWithVsWithout from '../content/ChartWithVsWithout';
 import ChartTotalVsOver from '../content/ChartTotalVsOver';
 import ChartTotalVsOverArt from '../content/ChartTotalVsOverArt';
 import OverstockLocalTable from '../content/OverstockLocalTable';
+import ChartTreemapCategoryBrand from '../content/ChartTreemapCategoryBrand';
+import locals from '../../json/locals.json';
 
 const QueryPage = () => {
+
+	const [selectedLocal, setSelectedLocal] = useState(locals[4]);
+
 	return <MainLayout>
 		<div className='container-fluid my-4'>
 			<div className='row'>
 				<div className='col-12'>
-					<h4>La Arboleda - La Arboleda - Bodega Central</h4>
+					<h4>{selectedLocal.label}</h4>
 				</div>
 			</div>
 			<div className='row my-2'>
 				<div className='col-12'>
 					<div className='rounded border shadow-sm bg-white p-3'>
 						<div className='row'>
-							<div className='col-sm-2 offset-sm-1'>
+							<div className='col-sm-2'>
+								<div className='small text-muted'>Sucursal</div>
+								<Select placeholder='Seleccionar' options={locals} value={selectedLocal} onChange={setSelectedLocal} />
+							</div>
+							<div className='col-sm-2'>
 								<div className='small text-muted'>ABC</div>
 								<Select placeholder='Seleccionar' />
 							</div>
@@ -76,6 +84,11 @@ const QueryPage = () => {
 				</div>
 				<div className='col-sm-4'>
 					<ChartTotalVsOverArt />
+				</div>
+			</div>
+			<div className='row'>
+				<div className='col-12'>
+					<ChartTreemapCategoryBrand />
 				</div>
 			</div>
 			<div className='row'>

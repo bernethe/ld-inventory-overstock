@@ -18,7 +18,8 @@ const OverstockLocalTable = () => {
 		},
 		{
 			header: 'Factor Unitario',
-			accessorKey: 'Articulo_Factor_Unitario'
+			accessorKey: 'Articulo_Factor_Unitario',
+			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		},
 		{
 			header: 'Nombre',
@@ -135,7 +136,15 @@ const OverstockLocalTable = () => {
 			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
 		}
 	];
-	return <TableWrapper table={<Table tableID='homeDetailsTable' data={tableDataJSON} columns={myColumns} />} />
+	return <TableWrapper
+		table={
+			<Table
+				tableID='homeDataTable'
+				data={tableDataJSON.slice(0, 10)}
+				columns={myColumns}
+			/>
+		}
+	/>
 }
 
 export default OverstockLocalTable
