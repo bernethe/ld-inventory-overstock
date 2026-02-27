@@ -56,22 +56,22 @@ const QueryPage = () => {
 				<div className='col-sm-4 my-2'>
 					<div className='rounded border shadow-sm bg-white p-3 text-center'>
 						<h6 className='text-muted'>Artículos</h6>
-						<div className='h2'><strong><CountingNumber number={1447} milesSeparator='.' /></strong></div>
-						<div className='small text-muted'>Número de productos <strong>1.447</strong> (100.0%)</div>
+						<div className='h2'><strong><CountingNumber number={1447} milesSeparator=',' /></strong></div>
+						<div className='small text-muted'>Número de productos <strong>1,447</strong> (100%)</div>
 					</div>
 				</div>
 				<div className='col-sm-4 my-2'>
 					<div className='rounded border shadow-sm bg-white p-3 text-center'>
 						<h6 className='text-muted'>Costo (₡)</h6>
-						<div className='h2'><strong>₡<CountingNumber number={46579977} milesSeparator='.' /></strong></div>
-						<div className='small text-muted'>Sobre Existencia: <strong>₡31.776.278</strong> (68.2%)</div>
+						<div className='h2'><strong>₡<CountingNumber number={46579977} milesSeparator=',' /></strong></div>
+						<div className='small text-muted'>Sobre Existencia: <strong>₡31,776,278</strong> (68.2%)</div>
 					</div>
 				</div>
 				<div className='col-sm-4 my-2'>
 					<div className='rounded border shadow-sm bg-white p-3 text-center'>
 						<h6 className='text-muted'>Piezas</h6>
-						<div className='h2'><strong><CountingNumber number={6427} milesSeparator='.' /></strong></div>
-						<div className='small text-muted'>Sobre Existencia: <strong>4.037,526</strong> (62.8%)</div>
+						<div className='h2'><strong><CountingNumber number={6427} milesSeparator=',' /></strong></div>
+						<div className='small text-muted'>Sobre Existencia: <strong>4,037,526</strong> (62.8%)</div>
 					</div>
 				</div>
 			</div>

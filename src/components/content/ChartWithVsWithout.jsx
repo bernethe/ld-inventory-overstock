@@ -17,7 +17,7 @@ const ChartWithVsWithout = () => {
 						customLabel = chart.options.chart.custom.label =
 							chart.renderer.label(
 								'Total<br/>' +
-								'<strong>1.553</strong>'
+								'<strong>1,553</strong>'
 							)
 								.css({
 									color: '#000',
@@ -81,7 +81,7 @@ const ChartWithVsWithout = () => {
 			colorByPoint: true,
 			innerSize: '75%',
 			data: [{
-				name: 'Con Sobreexistencia (1553)',
+				name: 'Con Sobreexistencia (1,553)',
 				y: 1553
 			}, {
 				name: 'Sin Sobreexistencia (0)',

@@ -3,6 +3,16 @@ import TableWrapper from '../elements/TableWrapper';
 import Table from '../elements/Table';
 import tableDataJSON from '../../json/inventory-overstock.json';
 
+const formatNumber = (value, options = {}) => {
+	const num = Number(value);
+	if (Number.isNaN(num)) return value ?? '';
+	return new Intl.NumberFormat('en-US', {
+		minimumFractionDigits: 0,
+		maximumFractionDigits: 10,
+		...options
+	}).format(num);
+};
+
 const OverstockLocalTable = () => {
 
 	const myColumns = [
@@ -19,7 +29,7 @@ const OverstockLocalTable = () => {
 		{
 			header: 'Factor Unitario',
 			accessorKey: 'Articulo_Factor_Unitario',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Nombre',
@@ -44,7 +54,7 @@ const OverstockLocalTable = () => {
 		{
 			header: 'Costo Unitario',
 			accessorKey: 'Costo_Unitario',
-			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
+			cell: (cell) => <div className='text-end'>₡{formatNumber(cell.getValue(), {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
 		},
 		{
 			header: 'ABC',
@@ -54,57 +64,57 @@ const OverstockLocalTable = () => {
 		{
 			header: 'AxC ABC Auto',
 			accessorKey: 'AxC_ABC_Auto',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Existencia Actual',
 			accessorKey: 'Existencia_Actual',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Existencia Padre/Hijo',
 			accessorKey: 'Existencia_PadreHijo',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Transito',
 			accessorKey: 'Transito',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Politica Reposicion',
 			accessorKey: 'Politica_Reposicion',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'PVD',
 			accessorKey: 'PVD',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Stock Minimo',
 			accessorKey: 'Stock_Minimo',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Punto Reorden',
 			accessorKey: 'Punto_Reorden',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Inventario Maximo',
 			accessorKey: 'Inventario_Maximo',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Dias Cobertura',
 			accessorKey: 'Dias_Cobertura',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'PVD Usado',
 			accessorKey: 'PVD_Usado',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Cobertura Fuente',
@@ -113,27 +123,27 @@ const OverstockLocalTable = () => {
 		{
 			header: 'Dias Cobertura Calc',
 			accessorKey: 'DiasCoberturaCalc',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Costo Inventario',
 			accessorKey: 'Costo_Inventario',
-			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
+			cell: (cell) => <div className='text-end'>₡{formatNumber(cell.getValue(), {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
 		},
 		{
 			header: 'Costo Sobre Existencia',
 			accessorKey: 'Costo_Sobre_Existencia',
-			cell: (cell) => <div className='text-end'>₡{cell.getValue().toLocaleString('es-CR')}</div>
+			cell: (cell) => <div className='text-end'>₡{formatNumber(cell.getValue(), {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
 		},
 		{
 			header: 'Existencia',
 			accessorKey: 'Existencia',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
 			header: 'Sobre Existencia',
 			accessorKey: 'Sobre_Existencia',
-			cell: (cell) => <div className='text-end'>{cell.getValue()}</div>
+			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		}
 	];
 	return <TableWrapper

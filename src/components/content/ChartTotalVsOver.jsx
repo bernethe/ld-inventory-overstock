@@ -17,7 +17,7 @@ const ChartTotalVsOver = () => {
 						customLabel = chart.options.chart.custom.label =
 							chart.renderer.label(
 								'Total<br/>' +
-								'<strong>₡81.696.370</strong>'
+								'<strong>₡81,696,370</strong>'
 							)
 								.css({
 									color: '#000',
@@ -82,11 +82,11 @@ const ChartTotalVsOver = () => {
 			innerSize: '75%',
 			data: [
 				{
-					name: 'Valor <br /> Inventario <br /> (₡48.250.034)',
+					name: 'Valor <br /> Inventario <br /> (₡48,250,034)',
 					y: 48250034
 				},
 				{
-					name: 'Valor <br /> Sobre <br /> Existencia <br /> (₡33.446.336)',
+					name: 'Valor <br /> Sobre <br /> Existencia <br /> (₡33,446,336)',
 					y: 33446336
 				}
 			]

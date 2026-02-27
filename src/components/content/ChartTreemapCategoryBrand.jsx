@@ -9,8 +9,9 @@ if (typeof TreemapModule === 'function') {
 	TreemapModule(Highcharts);
 }
 
-const currencyFormatter = new Intl.NumberFormat('es-CR', {
-	maximumFractionDigits: 0
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+	maximumFractionDigits: 2,
+	minimumFractionDigits: 0
 });
 
 const ChartTreemapCategoryBrand = () => {
