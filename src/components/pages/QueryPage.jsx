@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import Select from 'react-select';
 import MainLayout from '../layouts/MainLayout';
 import CountingNumber from '../elements/CountingNumber';
@@ -8,10 +8,31 @@ import ChartTotalVsOverArt from '../content/ChartTotalVsOverArt';
 import OverstockLocalTable from '../content/OverstockLocalTable';
 import ChartTreemapCategoryBrand from '../content/ChartTreemapCategoryBrand';
 import locals from '../../json/locals.json';
+import allData from '../../json/inventory-overstock.json';
 
 const QueryPage = () => {
 
+	const getUniqueValues = (data, key) => {
+		const uniques = new Set();
+		data.forEach((item) => {
+			const value = item[key];
+			if (value !== undefined && value !== null && value !== '') {
+				uniques.add(String(value));
+			}
+		});
+		return (Array.from(uniques)).map((value) => ({ value, label: value }));
+	};
+
+	const abcOptions = useMemo(() => [{value: '', label: '- TODOS -'}, ...getUniqueValues(allData, 'ABC')], []);
+	const categoryOptions = useMemo(() => [{value: '', label: '- TODAS -'}, ...getUniqueValues(allData, 'Categoria')], []);
+	const brandOptions = useMemo(() => [{value: '', label: '- TODAS -'}, ...getUniqueValues(allData, 'Marca')], []);
+	const departmentOptions = useMemo(() => [{value: '', label: '- TODOS -'}, ...getUniqueValues(allData, 'Departamento')], []);
+
 	const [selectedLocal, setSelectedLocal] = useState(locals[4]);
+	const [selectedABC, setSelectedABC] = useState(abcOptions[0]);
+	const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
+	const [selectedBrand, setSelectedBrand] = useState(brandOptions[0]);
+	const [selectedDepartment, setSelectedDepartment] = useState(departmentOptions[0]);
 
 	return <MainLayout>
 		<div className='container-fluid my-4'>
@@ -26,23 +47,23 @@ const QueryPage = () => {
 						<div className='row'>
 							<div className='col-sm-2'>
 								<div className='small text-muted'>Sucursal</div>
-								<Select placeholder='Seleccionar' options={locals} value={selectedLocal} onChange={setSelectedLocal} />
+								<Select options={locals} value={selectedLocal} onChange={setSelectedLocal} />
 							</div>
 							<div className='col-sm-2'>
 								<div className='small text-muted'>ABC</div>
-								<Select placeholder='Seleccionar' />
+								<Select options={abcOptions} value={selectedABC} onChange={setSelectedABC} />
 							</div>
 							<div className='col-sm-2'>
 								<div className='small text-muted'>Categoría</div>
-								<Select placeholder='Seleccionar' />
+								<Select options={categoryOptions} value={selectedCategory} onChange={setSelectedCategory} />
 							</div>
 							<div className='col-sm-2'>
 								<div className='small text-muted'>Marca</div>
-								<Select placeholder='Seleccionar' />
+								<Select options={brandOptions} value={selectedBrand} onChange={setSelectedBrand} />
 							</div>
 							<div className='col-sm-2'>
 								<div className='small text-muted'>Departamento</div>
-								<Select placeholder='Seleccionar' />
+								<Select options={departmentOptions} value={selectedDepartment} onChange={setSelectedDepartment} />
 							</div>
 							<div className='col-sm-2'>
 								<button className='btn btn-outline-secondary mt-4 me-2'>Limpiar</button>
