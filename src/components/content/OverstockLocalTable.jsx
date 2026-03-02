@@ -147,6 +147,7 @@ const OverstockLocalTable = () => {
 		}
 	];
 	return <TableWrapper
+		tableHeads={myColumns}
 		table={
 			<Table
 				tableID='homeDataTable'

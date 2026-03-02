@@ -28,11 +28,18 @@ const QueryPage = () => {
 	const brandOptions = useMemo(() => [{value: '', label: '- TODAS -'}, ...getUniqueValues(allData, 'Marca')], []);
 	const departmentOptions = useMemo(() => [{value: '', label: '- TODOS -'}, ...getUniqueValues(allData, 'Departamento')], []);
 
+	const tipoSobreexistenciaOptions = [
+		{value: 1, label: '- TODOS -'},
+		{value: 2, label: 'Regular / Con movimiento'},
+		{value: 3, label: 'Alerta / Sin Movimiento'}
+	];
+
 	const [selectedLocal, setSelectedLocal] = useState(locals[4]);
 	const [selectedABC, setSelectedABC] = useState(abcOptions[0]);
 	const [selectedCategory, setSelectedCategory] = useState(categoryOptions[0]);
 	const [selectedBrand, setSelectedBrand] = useState(brandOptions[0]);
 	const [selectedDepartment, setSelectedDepartment] = useState(departmentOptions[0]);
+	const [selectedTipoSobreexistencia, setSelectedTipoSobreexistencia] = useState(tipoSobreexistenciaOptions[0]);
 
 	return <MainLayout>
 		<div className='container-fluid my-4'>
@@ -66,6 +73,10 @@ const QueryPage = () => {
 								<Select options={departmentOptions} value={selectedDepartment} onChange={setSelectedDepartment} />
 							</div>
 							<div className='col-sm-2'>
+								<div className='small text-muted'>Tipo de Sobreexistencia</div>
+								<Select options={tipoSobreexistenciaOptions} value={selectedTipoSobreexistencia} onChange={setSelectedTipoSobreexistencia} />
+							</div>
+							<div className='col-sm-12 text-end'>
 								<button className='btn btn-outline-secondary mt-4 me-2'>Limpiar</button>
 								<button className='btn btn-primary mt-4'>Consultar</button>
 							</div>

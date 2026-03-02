@@ -1,9 +1,23 @@
-import {FaFastForward, FaFastBackward} from 'react-icons/fa';
+import {FaList, FaFileExcel, FaFastForward, FaFastBackward} from 'react-icons/fa';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-const TableWrapper = ({table}) => {
+const TableWrapper = ({table, tableHeads}) => {
     return <>
         <div className='row mt-4'>
-			<div className='col-sm-4 offset-sm-8 text-end'>
+			<div className='col-sm-8 my-2'>
+				<button className='btn btn-primary me-2'><FaFileExcel /></button>
+				<div className='dropdown d-inline-block'>
+					<button className='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>
+						<FaList />
+					</button>
+					<ul className='dropdown-menu' aria-labelledby='dropdownMenuButton' onClick={ e => e.stopPropagation() }>
+						{tableHeads.map((head, index) => (
+							<li key={head.accessorKey}><label className='d-block px-2 py-1'><input type='checkbox' /> {head.header}</label></li>
+						))}
+					</ul>
+				</div>
+			</div>
+			<div className='col-sm-4 text-end'>
 				<input type='text' className='form-control' placeholder='Buscar' />
 			</div>
 		</div>
