@@ -107,9 +107,14 @@ const OverstockLocalTable = () => {
 			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},
 		{
-			header: 'Dias Cobertura',
+			header: 'Días Cobertura',
 			accessorKey: 'Dias_Cobertura',
 			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
+		},
+		{
+			header: 'PVD Imputado',
+			accessorKey: 'PVD',
+			cell: (cell) => <div className={`point-bull point-bull-${ cell.getValue() === 0 ? 'yes' : 'no' }-inputad`}></div>
 		},
 		{
 			header: 'PVD Usado',
@@ -121,7 +126,7 @@ const OverstockLocalTable = () => {
 			accessorKey: 'CoberturaFuente'
 		},
 		{
-			header: 'Dias Cobertura Calc',
+			header: 'Días Cobertura Calc',
 			accessorKey: 'DiasCoberturaCalc',
 			cell: (cell) => <div className='text-end'>{formatNumber(cell.getValue())}</div>
 		},

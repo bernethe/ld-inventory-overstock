@@ -10,9 +10,9 @@ const TableWrapper = ({table, tableHeads}) => {
 					<button className='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>
 						<FaList />
 					</button>
-					<ul className='dropdown-menu' aria-labelledby='dropdownMenuButton' onClick={ e => e.stopPropagation() }>
+					<ul className='dropdown-menu dropdown-menu-scrollable' aria-labelledby='dropdownMenuButton' onClick={ e => e.stopPropagation() }>
 						{tableHeads.map((head, index) => (
-							<li key={head.accessorKey}><label className='d-block px-2 py-1'><input type='checkbox' /> {head.header}</label></li>
+							<li key={head.accessorKey}><label className='d-block px-2 py-1'><input type='checkbox' checked={true} /> {head.header}</label></li>
 						))}
 					</ul>
 				</div>
