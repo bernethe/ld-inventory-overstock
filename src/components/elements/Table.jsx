@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 
-const Table = ({tableID, data, columns}) => {
+const Table = ({tableID, data, columns, columnVisibility, onColumnVisibilityChange}) => {
 
-	const [sortingState, setSortingState] = useState();
+	const [sortingState, setSortingState] = useState([]);
 
 	const table = useReactTable({
 		data: data,
@@ -14,9 +14,11 @@ const Table = ({tableID, data, columns}) => {
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
 		onSortingChange: setSortingState,
+		onColumnVisibilityChange,
 		// onRowSelectionChange: setRowSel,
 		state: {
 			sorting: sortingState,
+			columnVisibility: columnVisibility ?? {},
 			// rowSelection: rowSel
 		}
 	});

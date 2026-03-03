@@ -1,7 +1,10 @@
+import React, {useState} from 'react';
 import {FaList, FaFileExcel, FaFastForward, FaFastBackward} from 'react-icons/fa';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const TableWrapper = ({table, tableHeads}) => {
+	const [columnVisibility, setColumnVisibility] = useState(() => Object.fromEntries(tableHeads.map(head => [head.accessorKey, true])));
+
     return <>
         <div className='row mt-4'>
 			<div className='col-sm-8 my-2'>
@@ -11,9 +14,20 @@ const TableWrapper = ({table, tableHeads}) => {
 						<FaList />
 					</button>
 					<ul className='dropdown-menu dropdown-menu-scrollable' aria-labelledby='dropdownMenuButton' onClick={ e => e.stopPropagation() }>
-						{tableHeads.map((head, index) => (
-							<li key={head.accessorKey}><label className='d-block px-2 py-1'><input type='checkbox' checked={true} /> {head.header}</label></li>
-						))}
+						{
+							tableHeads.map((head, index) => (
+								<li key={head.accessorKey}>
+									<label className='d-block px-2 py-1'>
+										<input
+											type='checkbox'
+											checked={columnVisibility[head.accessorKey] !== false}
+											onChange={e => setColumnVisibility(prev => ({...prev, [head.accessorKey]: e.target.checked}))}
+										/> 
+										{head.header}
+									</label>
+								</li>
+							))
+						}
 					</ul>
 				</div>
 			</div>
@@ -26,7 +40,7 @@ const TableWrapper = ({table, tableHeads}) => {
 				<div className='row my-4'>
 					<div className='col'>
 						<div className='table-responsive'>
-                            {table}
+                            {React.cloneElement(table, {columnVisibility, onColumnVisibilityChange: setColumnVisibility})}
                         </div>
 					</div>
 				</div>
